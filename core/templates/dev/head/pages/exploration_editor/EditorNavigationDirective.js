@@ -127,39 +127,39 @@ oppia.directive('editorNavigation', [
 
           // Create default option "Go to..."
           $('<option />', {
-            'selected': 'selected',
-            'value'   : '',
-            'text'    : 'Go to...'
+            selected: 'selected',
+            value: '',
+            text: 'Go to...'
           }).appendTo('nav select');
 
           // Populate dropdown with menu items
           $('<option />', {
-            'value'   : 'mainTab',
-            'text'    : 'Editor'
+            value: 'mainTab',
+            text: 'Editor'
           }).appendTo('nav select');
           $('<option />', {
-            'value'   : 'translationTab',
-            'text'    : 'Translation'
+            value: 'translationTab',
+            text: 'Translation'
           }).appendTo('nav select');
           $('<option />', {
-            'value'   : 'previewTab',
-            'text'    : 'Preview'
+            value: 'previewTab',
+            text: 'Preview'
           }).appendTo('nav select');
           $('<option />', {
-            'value'   : 'settingsTab',
-            'text'    : 'Settings'
+            value: 'settingsTab',
+            text: 'Settings'
           }).appendTo('nav select');
           $('<option />', {
-            'value'   : 'statsTab',
-            'text'    : 'Statistics'
+            value: 'statsTab',
+            text: 'Statistics'
           }).appendTo('nav select');
           $('<option />', {
-            'value'   : 'historyTab',
-            'text'    : 'History'
+            value: 'historyTab',
+            text: 'History'
           }).appendTo('nav select');
           $('<option />', {
-            'value'   : 'feedbackTab',
-            'text'    : 'Feedback'
+            value: 'feedbackTab',
+            text: 'Feedback'
           }).appendTo('nav select');
 
           $('nav select').change(function() {
