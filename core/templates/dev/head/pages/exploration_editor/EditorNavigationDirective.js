@@ -122,6 +122,75 @@ oppia.directive('editorNavigation', [
           WindowDimensionsService.registerOnResizeHook(function() {
             $scope.isLargeScreen = (WindowDimensionsService.getWidth() >= 1024);
           });
+          // Create the dropdown base
+          $('<select />').appendTo('nav');
+
+          // Create default option "Go to..."
+          $('<option />', {
+            'selected': 'selected',
+            'value'   : '',
+            'text'    : 'Go to...'
+          }).appendTo('nav select');
+
+          // Populate dropdown with menu items
+          $('<option />', {
+            'value'   : 'mainTab',
+            'text'    : 'Editor'
+          }).appendTo('nav select');
+          $('<option />', {
+            'value'   : 'translationTab',
+            'text'    : 'Translation'
+          }).appendTo('nav select');
+          $('<option />', {
+            'value'   : 'previewTab',
+            'text'    : 'Preview'
+          }).appendTo('nav select');
+          $('<option />', {
+            'value'   : 'settingsTab',
+            'text'    : 'Settings'
+          }).appendTo('nav select');
+          $('<option />', {
+            'value'   : 'statsTab',
+            'text'    : 'Statistics'
+          }).appendTo('nav select');
+          $('<option />', {
+            'value'   : 'historyTab',
+            'text'    : 'History'
+          }).appendTo('nav select');
+          $('<option />', {
+            'value'   : 'feedbackTab',
+            'text'    : 'Feedback'
+          }).appendTo('nav select');
+
+          $('nav select').change(function() {
+            $scope.tab = $(this).find('option:selected').val();
+            switch ($scope.tab) {
+              case 'mainTab':
+                $scope.selectMainTab();
+                break;
+              case 'translationTab':
+                $scope.selectTranslationTab();
+                break;
+              case 'previewTab':
+                $scope.selectPreviewTab();
+                break;
+              case 'settingsTab':
+                $scope.selectSettingsTab();
+                break;
+              case 'statsTab':
+                $scope.selectStatsTab();
+                break;
+              case 'historyTab':
+                $scope.selectHistoryTab();
+                break;
+              case 'feedbackTab':
+                $scope.selectFeedbackTab();
+                break;
+              case 'userHelpModal':
+                $scope.showUserHelpModal();
+                break;
+            }
+          });
         }
       ]
     };

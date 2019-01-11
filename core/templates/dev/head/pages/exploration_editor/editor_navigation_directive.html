@@ -113,7 +113,15 @@
     </li>
   </div>
 </ul>
+
 <style type="text/css">
+    nav select {
+    display: none;
+  }
+  @media (max-width: 1023px) {
+  nav ul     { display: none; }
+  nav select { display: inline-block; text-align: center; position: relative; left: 20px; border-radius: 1px; top: 5px; z-index: -1; }
+}
   .oppia-help-dropdown .uib-popover {
     color: white;
     font-size: 14px;
