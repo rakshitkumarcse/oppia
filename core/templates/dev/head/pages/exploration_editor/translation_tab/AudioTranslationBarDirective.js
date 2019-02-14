@@ -93,6 +93,45 @@ oppia.directive('audioTranslationBar', [
           $scope.checkingMicrophonePermission = false;
           $scope.audioTimerIsShown = true;
           $scope.audioIsCurrentlyBeingSaved = false;
+          $scope.showShortcutNote = false;
+
+          var isCtrl = false;
+          var isAlt = false;
+
+          $scope.$watch('audioBlob', function() {
+            if ($scope.audioBlob) {
+              $scope.showShortcutNote = false;
+            } else if(!$scope.isAudioAvailable) {
+              $scope.showShortcutNote = true;
+            }
+          });
+
+          document.onkeyup = function(e) {
+            var key = e.which || e.keyCode;
+            if (key === 17) {
+              isCtrl = false;
+            } else if (key === 18) {
+              isAlt = false;
+            }
+          };
+
+          // To set keyboard shortcut to start/stop recording.
+          document.onkeydown = function(e) {
+            var key = e.which || e.keyCode;
+            if (key === 17) {
+              isCtrl = true;
+            } else if (key === 18) {
+              isAlt = true;
+            }
+            if (key === 82 && isCtrl && isAlt) {
+              if(!$scope.isAudioAvailable && !$scope.recorder.status.
+                  isRecording && !$scope.audioBlob) {
+                    $scope.checkAndStartRecording();
+                } else if($scope.recorder.status.isRecording) {
+                  $scope.recorder.stopRecord();
+                }
+              }
+            };
 
           var saveContentIdsToAudioTranslationChanges = function() {
             StateContentIdsToAudioTranslationsService.saveDisplayedValue();
@@ -365,6 +404,7 @@ oppia.directive('audioTranslationBar', [
               $scope.contentId, $scope.languageCode);
             if (audioTranslationObject) {
               $scope.isAudioAvailable = true;
+              $scope.showRecorderWarning = false;
               $scope.isLoadingAudio = true;
               $scope.selectedRecording = false;
               $scope.audioNeedsUpdate = audioTranslationObject.needsUpdate;
@@ -407,6 +447,7 @@ oppia.directive('audioTranslationBar', [
                 .deleteAudioTranslation($scope.contentId, $scope.languageCode);
               saveContentIdsToAudioTranslationChanges();
               $scope.initAudioBar();
+              $scope.showShortcutNote = true;
             });
           };
 
