@@ -101,7 +101,7 @@ oppia.directive('audioTranslationBar', [
           $scope.$watch('audioBlob', function() {
             if ($scope.audioBlob) {
               $scope.showShortcutNote = false;
-            } else if(!$scope.isAudioAvailable) {
+            } else if (!$scope.isAudioAvailable) {
               $scope.showShortcutNote = true;
             }
           });
@@ -124,14 +124,14 @@ oppia.directive('audioTranslationBar', [
               isAlt = true;
             }
             if (key === 82 && isCtrl && isAlt) {
-              if(!$scope.isAudioAvailable && !$scope.recorder.status.
-                  isRecording && !$scope.audioBlob) {
-                    $scope.checkAndStartRecording();
-                } else if($scope.recorder.status.isRecording) {
-                  $scope.recorder.stopRecord();
-                }
+              if (!$scope.isAudioAvailable && !$scope.recorder.status.
+                isRecording && !$scope.audioBlob) {
+                  $scope.checkAndStartRecording();
+              } else if($scope.recorder.status.isRecording) {
+                $scope.recorder.stopRecord();
               }
-            };
+            }
+          };
 
           var saveContentIdsToAudioTranslationChanges = function() {
             StateContentIdsToAudioTranslationsService.saveDisplayedValue();
