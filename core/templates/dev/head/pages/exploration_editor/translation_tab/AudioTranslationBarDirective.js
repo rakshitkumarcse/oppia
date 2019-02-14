@@ -101,8 +101,6 @@ oppia.directive('audioTranslationBar', [
           $scope.$watch('audioBlob', function() {
             if ($scope.audioBlob) {
               $scope.shortcutNoteIsShown = false;
-            } else if (!$scope.isAudioAvailable) {
-              $scope.shortcutNoteIsShown = true;
             }
           });
 
@@ -448,7 +446,6 @@ oppia.directive('audioTranslationBar', [
                 .deleteAudioTranslation($scope.contentId, $scope.languageCode);
               saveContentIdsToAudioTranslationChanges();
               $scope.initAudioBar();
-              $scope.shortcutNoteIsShown = true;
             });
           };
 
