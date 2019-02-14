@@ -126,8 +126,8 @@ oppia.directive('audioTranslationBar', [
             if (key === 82 && isCtrl && isAlt) {
               if (!$scope.isAudioAvailable && !$scope.recorder.status.
                 isRecording && !$scope.audioBlob) {
-                  $scope.checkAndStartRecording();
-              } else if($scope.recorder.status.isRecording) {
+                $scope.checkAndStartRecording();
+              } else if ($scope.recorder.status.isRecording) {
                 $scope.recorder.stopRecord();
               }
             }
