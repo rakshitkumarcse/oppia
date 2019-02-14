@@ -175,7 +175,7 @@
     </button>
   </div>
 </div>
-<div class="oppia-translation-bottom-right-container" ng-if="showShortcutNote">
+<div class="oppia-translation-bottom-shortcut-note" ng-if="shortcutNoteIsShown">
   <span>
     <strong>Note: </strong>You can also use shortcut Ctrl + Alt + R to start/stop recording.
   </span>
@@ -312,6 +312,14 @@
   .oppia-translation-bottom-right-container {
     color: #ce133b;
     font-size: 12px;
+    letter-spacing: 0.5px;
+    position: relative;
+    text-align: center;
+    top: 10px;
+  }
+  .oppia-translation-bottom-shortcut-note {
+  	color: #000000;
+  	font-size: 12px;
     letter-spacing: 0.5px;
     position: relative;
     text-align: center;

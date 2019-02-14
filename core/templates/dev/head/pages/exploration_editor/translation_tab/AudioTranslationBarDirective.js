@@ -93,16 +93,16 @@ oppia.directive('audioTranslationBar', [
           $scope.checkingMicrophonePermission = false;
           $scope.audioTimerIsShown = true;
           $scope.audioIsCurrentlyBeingSaved = false;
-          $scope.showShortcutNote = false;
+          $scope.shortcutNoteIsShown = false;
 
           var isCtrl = false;
           var isAlt = false;
 
           $scope.$watch('audioBlob', function() {
             if ($scope.audioBlob) {
-              $scope.showShortcutNote = false;
+              $scope.shortcutNoteIsShown = false;
             } else if (!$scope.isAudioAvailable) {
-              $scope.showShortcutNote = true;
+              $scope.shortcutNoteIsShown = true;
             }
           });
 
@@ -413,6 +413,7 @@ oppia.directive('audioTranslationBar', [
               $scope.audioBlob = null;
               $scope.selectedRecording = false;
             }
+            $scope.shortcutNoteIsShown = !$scope.isAudioAvailable;
           };
 
           $scope.track = {
@@ -447,7 +448,7 @@ oppia.directive('audioTranslationBar', [
                 .deleteAudioTranslation($scope.contentId, $scope.languageCode);
               saveContentIdsToAudioTranslationChanges();
               $scope.initAudioBar();
-              $scope.showShortcutNote = true;
+              $scope.shortcutNoteIsShown = true;
             });
           };
 
